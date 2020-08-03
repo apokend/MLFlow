@@ -14,6 +14,7 @@ class FlowTraining:
 
     def log_tags_and_params(self, remote_run_id):
         run_id = self.get_local_run_id()
+        print(run_id)
         mlflow.set_tracking_uri(self.local_experiment_dir)
         run = mlflow.get_run(run_id = run_id)
         params = run.data.params
