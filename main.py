@@ -8,19 +8,19 @@ class FlowTraining:
     def __init__(self, tracking_uri, experiment_name):
         self.tracking_uri = tracking_uri
         self.experiment_name = experiment_name
-        self.remote_server = RemoteTracking(tracking_uri=tracking_uri)
+        #self.remote_server = RemoteTracking(tracking_uri=tracking_uri)
         #self.local_experiment_dir = './mlruns'
         #self.local_experiment_id = '0'
 
     def run(self):
         print('Entry point: Workflow')
-        remote_experiment_id = self.remote_server.get_experiment_id(name = self.experiment_name)
-        remote_run_id = self.remote_server.get_run_id(remote_experiment_id)
+        #remote_experiment_id = self.remote_server.get_experiment_id(name = self.experiment_name)
+        #remote_run_id = self.remote_server.get_run_id(remote_experiment_id)
 
-        mlflow.set_tracking_uri(self.tracking_uri)
-        mlflow.set_experiment(self.experiment_name)
+        #mlflow.set_tracking_uri(self.tracking_uri)
+        #mlflow.set_experiment(self.experiment_name)
 
-        print(remote_run_id)
+        #print(remote_run_id)
 
         with mlflow.start_run() as active_run:
             git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
