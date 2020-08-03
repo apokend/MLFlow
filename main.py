@@ -13,6 +13,5 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('-name', '--experiment_name', default ='Default', type = str)
     args = parser.parse_args()
+    print(args.experiment_name)
     workflow(args)
-
-    #print(args.experiment_name)
