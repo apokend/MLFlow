@@ -27,6 +27,7 @@ class FlowTraining:
     def get_local_run_id(self):
         files = os.listdir(os.path.join(self.local_experiment_dir, self.local_experiment_id))
         for file in files:
+            print(file)
             if not file.endswith('.yaml'):
                 return file
 
