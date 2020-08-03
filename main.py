@@ -22,7 +22,7 @@ class FlowTraining:
 
         print(remote_run_id)
 
-        with mlflow.start_run(run_id = remote_run_id) as active_run:
+        with mlflow.start_run() as active_run:
             git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
             print(git_commit)
             mlflow.log_param("param2", 'Hello World!')
