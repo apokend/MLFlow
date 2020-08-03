@@ -21,7 +21,7 @@ class FlowTraining:
         self.remote_server.set_tags(remote_run_id, tags)
         self.remote_server.log_params(remote_run_id, params)
 
-    def get_local_run(self):
+    def get_local_run_id(self):
         files = os.listdir(os.path.join(self.local_experiment_dir, self.local_experiment_id))
         for file in files:
             if not file.endswith('.yaml'):
