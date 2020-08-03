@@ -20,6 +20,8 @@ class FlowTraining:
         mlflow.set_tracking_uri(self.tracking_uri)
         mlflow.set_experiment(self.experiment_name)
 
+        print(remote_run_id)
+
         with mlflow.start_run(run_id = remote_run_id) as active_run:
             git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
             print(git_commit)
