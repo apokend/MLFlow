@@ -36,9 +36,12 @@ class FlowTraining:
         mlflow.set_experiment(self.experiment_name)
 
         with mlflow.start_run(run_id=remote_run_id, nested=False) as active_run:
-            git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
             print('WOW')
-            #print(git_commit)
+            if not os.path.exists('outputs'):
+                os.makedirs('outputs')
+            with open('outputs/test.txt', 'w') as f:
+                f.write('hello world!')
+            mlflow.log_artifact('outputs')
         try:
             self.log_tags_and_params(remote_run_id)
         except  mlflow.exceptions.RestException as e:
