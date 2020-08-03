@@ -23,7 +23,7 @@ class FlowTraining:
         with mlflow.start_run(run_id = remote_run_id) as active_run:
             git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
             print(git_commit)
-            mlflow.set_tag('name','Alex')
+            mlflow.log_param("param1", 'Hello World!')
 
 if __name__ == '__main__':
     print('Entry_point: main.py')
