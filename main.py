@@ -18,6 +18,8 @@ class FlowTraining:
         run = mlflow.get_run(run_id = run_id)
         params = run.data.params
         tags = run.data.tags
+        print(tags)
+        print(params)
         self.remote_server.set_tags(remote_run_id, tags)
         self.remote_server.log_params(remote_run_id, params)
 
@@ -42,11 +44,8 @@ class FlowTraining:
             with open('outputs/test.txt', 'w') as f:
                 f.write('hello world!')
             mlflow.log_artifact('outputs')
-        try:
-            self.log_tags_and_params(remote_run_id)
-        except  mlflow.exceptions.RestException as e:
-            print(e)
 
+        self.log_tags_and_params(remote_run_id)
 
 if __name__ == '__main__':
     print('Entry_point: main.py')
