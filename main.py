@@ -37,7 +37,8 @@ class FlowTraining:
 
         with mlflow.start_run(run_id=remote_run_id, nested=False) as active_run:
             git_commit = active_run.data.tags.get(mlflow_tags.MLFLOW_GIT_COMMIT)
-            print(git_commit)
+            print('WOW')
+            #print(git_commit)
         try:
             self.log_tags_and_params(remote_run_id)
         except  mlflow.exceptions.RestException as e:
