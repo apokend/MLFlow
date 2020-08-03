@@ -6,4 +6,5 @@ entry_points:
     main:
       parameters:
         experiment: {type: string}
-      command: "python main.py --experiment_name {experiment}"
+        uri: {type: string}
+      command: "python main.py --experiment_name {experiment} --tracking_uri {uri}"
