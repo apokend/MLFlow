@@ -1,0 +1,9 @@
+name: mlflow-test
+
+conda_env: conda.yaml
+
+entry_points:
+    main:
+      parameters:
+        experiment_name: {type: string, default: "Default"}
+      command: "python main.py --experiment_name {experiment_name}"
