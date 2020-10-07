@@ -8,16 +8,18 @@ from torch.utils.data import DataLoader, TensorDataset
 from utils.helpers import *
 
 
-def main():
+def main(my_path_to_data, **kwargs):
 
-    BATCH_SIZE = 50
-    TRAIN_PATH = '/home/alexander/airflow/src/data/train.csv'
-    TEST_PATH = '/home/alexander/airflow/src/data/test.csv'
+    BATCH_SIZE = kwargs['batch_size']
+    #BATCH_SIZE = 256
+    print(BATCH_SIZE)
 
-    test_data_sub = pd.read_csv(TEST_PATH)
-    train_data = pd.read_csv(TRAIN_PATH)
+    train_data = pd.read_csv(os.path.join(my_path_to_data, 'train.csv'))
+    print('Train data successfully loaded')
 
-    print(train_data.head(1))
+    test_data_sub=pd.read_csv(os.path.join(my_path_to_data, 'test.csv'))
+
+    print('Test data successfully loaded')
 
     reviews=train_data['review'].values
     labels=train_data['sentiment'].values
@@ -45,19 +47,8 @@ def main():
 
     print('Return 2 data loaders: train and valid')
 
-
     return {'train_iter':train_loader, 'val_iter':valid_loader}
 
 if __name__ == '__main__':
-    main()
-
-
-# def test_me():
-#     data = ['WoW' for i in range(3)]
-#     for sample in data:
-#         print(sample)
-#         print()
-#     return data
-#
-# if __name__ == '__main__':
-#     test_me()
+    my_path_to_data = '/home/alexander/Документы/test_airflow_docker/src/data'
+    main(my_path_to_data)

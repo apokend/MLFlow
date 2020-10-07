@@ -1,0 +1,20 @@
+Dataloaders:
+  load_dataloaders: False
+  save_dataloaders: False
+  batch_size: 256
+
+Model:
+  use_prod_model: False
+  use_stage_model: False
+  use_custom_model: True
+
+Parameters:
+  model_name: 'Cnn'
+  experiment_name: 'Testing Cnn model'
+  input_dim: 148794
+  embedding_dim: 128
+  hidden_dim: 128
+  output: 1
+  kernel_size:
+    - 2
+  dropout: 0.25

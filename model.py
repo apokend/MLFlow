@@ -37,3 +37,29 @@ class CnnSentimentAnalysis(nn.Module):
         #pooled_n = [batch, hidden_dim]
         cat = self.dropout(torch.cat(convs_pool, dim = 1 ))
         return self.projection(cat)
+
+
+def main(**kwargs):
+    # #
+    # vocab_size = 148794
+    # output_size = 1
+    # embedding_dim = 25
+    # hidden_dim = 6
+    # kernel_size = [2]
+    # dropout = 0.5
+    #
+    # cls = CnnSentimentAnalysis(input_dim = vocab_size,
+    #                         embedding_dim = embedding_dim,
+    #                         hidden_dim = hidden_dim,
+    #                         output = output_size,
+    #                         kernel_size = kernel_size,
+    #                         dropout = dropout)
+
+
+    cls = CnnSentimentAnalysis(input_dim = kwargs['input_dim'],
+                                 embedding_dim = kwargs['embedding_dim'],
+                                 hidden_dim = kwargs['hidden_dim'],
+                                 output = kwargs['output'],
+                                 kernel_size = kwargs['kernel_size'],
+                                 dropout = kwargs['dropout'])
+    return {'model':cls}
