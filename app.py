@@ -18,7 +18,7 @@ app = Flask(__name__)
 @app.route('/', methods=['POST','GET'])
 def test():
     #model = mlflow.pytorch.load_model(args.model)
-    model = mlflow.pytorch.load_model(os.environ['SPARK_HOME'])
+    model = mlflow.pytorch.load_model(os.environ['MODEL_URI'])
     model = model.to('cpu')
     data = request.get_json()
     msg = [data['msg']]
