@@ -6,17 +6,19 @@ from utils.helpers import *
 from collections import Counter
 from string import punctuation
 import torch
+import os
 
 app = Flask(__name__)
 
-parser = ArgumentParser()
-parser.add_argument('--model', type=str, help='Model uri')
-args=parser.parse_args()
+# parser = ArgumentParser()
+# parser.add_argument('--model', type=str, help='Model uri')
+# args=parser.parse_args()
 
 
 @app.route('/', methods=['POST','GET'])
 def test():
-    model = mlflow.pytorch.load_model(args.model)
+    #model = mlflow.pytorch.load_model(args.model)
+    model = mlflow.pytorch.load_model(os.environ['SPARK_HOME'])
     model = model.to('cpu')
     data = request.get_json()
     msg = [data['msg']]
